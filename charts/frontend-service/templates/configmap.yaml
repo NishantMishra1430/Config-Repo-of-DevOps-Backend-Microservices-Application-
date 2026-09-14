@@ -1,4 +1,4 @@
-apiVersion: v1
+iapiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend-nginx-config
@@ -44,7 +44,7 @@ data:
         }
 
         location /ws/ {
-        proxy_pass http://api-gateway:3000/;  # Re-routed to the actual WS streamer
+        proxy_pass http://api-gateway:3000;  # Re-routed to the actual WS streamer
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
