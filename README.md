@@ -98,9 +98,9 @@ To view live metrics and logs, port-forward the Grafana service to your local ma
 ```text
 kubectl port-forward svc/kube-prometheus-stack-grafana 8080:80 -n monitoring
 ```
-### Access the dashboard at http://localhost:8080 OR http://<IP-ADD-VPC>:8080 (Default username: admin).
+### Access the dashboard at http://localhost:8080 OR http://YOUR-IP-ADD:8080 (Default username: admin).
 
-# 👨‍💻 Author | DevOps 
-## Nishant Mishra
-## Computer Science and Engineering
-## Passionate about Platform Engineering, GitOps, DevOps, and building resilient distributed systems.
+## 👨‍💻 Author | DevOps 
+### Nishant Mishra
+### Computer Science and Engineering
+### Passionate about Platform Engineering, GitOps, DevOps, and building resilient distributed systems.
