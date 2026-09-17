@@ -35,6 +35,7 @@ The repository is logically separated into application definitions (Helm charts)
 │   ├── loki-app.yaml           # Observability: Loki & Promtail stack
 │   └── prometheus-app.yaml     # Observability: Kube-Prometheus stack
 └── Chart.yaml                  # Umbrella chart definition (Root level)
+```
 
 ## 🏗️ Architecture & Services
 The platform utilizes a highly decoupled, event-driven microservices architecture deployed primarily in the quant namespace.
@@ -51,9 +52,55 @@ Observability: Includes prometheus-app and loki-app for centralized metrics logg
 
 ## 🚀 Installation & Deployment Guide
 
-Step 1: Cluster Prerequisites & ArgoCD Installation
+### Step 1: Cluster Prerequisites & ArgoCD Installation
 Ensure you have a running Kubernetes cluster (e.g., K3s, Minikube, or EKS/GKE) and kubectl configured.
 
 Install the ArgoCD controller into your cluster:
+```text 
 kubectl create namespace argocd
 kubectl apply -n argocd -f [https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml](https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml)
+```
+
+Wait for the ArgoCD pods to become ready:
+```text
+kubectl get pods -n argocd -w
+```
+
+### Step 2: Deploy the Observability Stack
+Before deploying the microservices, bootstrap the monitoring tools to ensure all application metrics and logs are captured immediately upon startup.
+
+Deploy Prometheus and Loki via ArgoCD:
+```text
+kubectl apply -f gitops/prometheus-app.yaml -n argocd
+kubectl apply -f gitops/loki-app.yaml -n argocd
+```
+### Note: The Prometheus deployment utilizes ServerSideApply=true to bypass Kubernetes CRD size limitations.
+
+### Step 3: Deploy the Quantitative Microservices
+Deploy the entire application suite using the unified ArgoCD application manifest. This file dynamically maps to the configurations stored inside the charts/ directory.
+```text
+kubectl apply -f gitops/argocd-application.yml -n argocd
+```
+### Step 4: Verify the Deployment
+ArgoCD will automatically begin pulling the Helm charts, creating the quant namespace (if required by the manifests), and spinning up the microservices.
+
+Monitor the synchronization progress:
+```text
+# Check the status of the ArgoCD Application resources
+kubectl get applications -n argocd
+
+# Verify the microservices are running in the quant namespace
+kubectl get pods -n quant
+```
+
+### Step 5: Accessing the Dashboards
+To view live metrics and logs, port-forward the Grafana service to your local machine:
+```text
+kubectl port-forward svc/kube-prometheus-stack-grafana 8080:80 -n monitoring
+```
+### Access the dashboard at http://localhost:8080 OR http://<IP-ADD-VPC>:8080 (Default username: admin).
+
+# 👨‍💻 Author | DevOps 
+## Nishant Mishra
+## Computer Science and Engineering
+## Passionate about Platform Engineering, GitOps, DevOps, and building resilient distributed systems.
