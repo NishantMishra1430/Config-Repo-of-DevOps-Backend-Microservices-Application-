@@ -36,7 +36,7 @@ The repository is logically separated into application definitions (Helm charts)
 │   └── prometheus-app.yaml     # Observability: Kube-Prometheus stack
 └── Chart.yaml                  # Umbrella chart definition (Root level)
 
-# 🏗️ Architecture & Services
+## 🏗️ Architecture & Services
 The platform utilizes a highly decoupled, event-driven microservices architecture deployed primarily in the quant namespace.
 
 Edge & UI: Includes api-gateway and frontend-service to handle external client traffic, WebSocket connections, and user interfaces.
@@ -49,7 +49,7 @@ State & Data: Includes postgres and redis to provide persistent relational stora
 
 Observability: Includes prometheus-app and loki-app for centralized metrics logging, alerting, and log aggregation in the monitoring namespace.
 
-# 🚀 Installation & Deployment Guide
+## 🚀 Installation & Deployment Guide
 
 Step 1: Cluster Prerequisites & ArgoCD Installation
 Ensure you have a running Kubernetes cluster (e.g., K3s, Minikube, or EKS/GKE) and kubectl configured.
