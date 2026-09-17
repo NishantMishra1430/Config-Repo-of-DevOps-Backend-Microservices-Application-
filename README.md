@@ -35,3 +35,25 @@ The repository is logically separated into application definitions (Helm charts)
 │   ├── loki-app.yaml           # Observability: Loki & Promtail stack
 │   └── prometheus-app.yaml     # Observability: Kube-Prometheus stack
 └── Chart.yaml                  # Umbrella chart definition (Root level)
+
+# 🏗️ Architecture & Services
+The platform utilizes a highly decoupled, event-driven microservices architecture deployed primarily in the quant namespace.
+
+Edge & UI: Includes api-gateway and frontend-service to handle external client traffic, WebSocket connections, and user interfaces.
+
+Core Quant Logic: Includes quant-ai-engine, execution-engine, execution-service, and market-data-service to ingest real-time market data, run algorithmic strategies, and execute trades.
+
+Event Streaming: Includes rabbitmq, producer, consumer, and notification-service to manage asynchronous communication and reliable message delivery between microservices.
+
+State & Data: Includes postgres and redis to provide persistent relational storage and high-speed in-memory caching.
+
+Observability: Includes prometheus-app and loki-app for centralized metrics logging, alerting, and log aggregation in the monitoring namespace.
+
+# 🚀 Installation & Deployment Guide
+
+Step 1: Cluster Prerequisites & ArgoCD Installation
+Ensure you have a running Kubernetes cluster (e.g., K3s, Minikube, or EKS/GKE) and kubectl configured.
+
+Install the ArgoCD controller into your cluster:
+kubectl create namespace argocd
+kubectl apply -n argocd -f [https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml](https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml)
