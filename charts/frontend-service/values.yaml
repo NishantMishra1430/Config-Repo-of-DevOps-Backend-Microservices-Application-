@@ -10,7 +10,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "d5ccd017b7ea06c6357f5116de043262d7a43630"
+  tag: "f8f5b5a7e704667cfed2fb6e876d9af4f8f61914"
 env:
   vite_app: development
   vite_ws:
@@ -101,21 +101,21 @@ httpRoute:
         - path:
             type: PathPrefix
             value: /headers
-  #   filters:
-  #   - type: RequestHeaderModifier
-  #     requestHeaderModifier:
-  #       set:
-  #       - name: My-Overwrite-Header
-  #         value: this-is-the-only-value
-  #       remove:
-  #       - User-Agent
-  # - matches:
-  #   - path:
-  #       type: PathPrefix
-  #       value: /echo
-  #     headers:
-  #     - name: version
-  #       value: v2
+            #   filters:
+            #   - type: RequestHeaderModifier
+            #     requestHeaderModifier:
+            #       set:
+            #       - name: My-Overwrite-Header
+            #         value: this-is-the-only-value
+            #       remove:
+            #       - User-Agent
+            # - matches:
+            #   - path:
+            #       type: PathPrefix
+            #       value: /echo
+            #     headers:
+            #     - name: version
+            #       value: v2
 resources: {}
 # We usually recommend not to specify default resources and to leave this as a conscious
 # choice for the user. This also increases chances charts run on environments with little
