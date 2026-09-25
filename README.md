@@ -5,7 +5,7 @@
 </p>
 
 ## 📌 Overview
-This repository serves as the **Single Source of Truth (Config-Repo)** for the infrastructure, observability stack, and application state of a high-performance quantitative trading platform.
+This repository serves as the **Single Source of Truth (Config-Repo)** for the infrastructure, observability stack, and application state of a high-performance quantitative trading platform. 
 
 Following a strict **GitOps** methodology, all Kubernetes resources, Helm charts, and environment configurations are stored declaratively. **ArgoCD** continuously monitors this repository and reconciles the live Kubernetes cluster to match this exact state, eliminating configuration drift and manual interventions.
 
