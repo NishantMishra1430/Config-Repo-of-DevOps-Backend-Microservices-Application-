@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="./Screenshot 2026-09-17 165818.png" alt="GitOps Architecture Flow" width="850">
-</p> 
+</p>
 
 ## 📌 Overview
 This repository serves as the **Single Source of Truth (Config-Repo)** for the infrastructure, observability stack, and application state of a high-performance quantitative trading platform.
