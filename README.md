@@ -1,4 +1,4 @@
-# GitOps Configuration Repository: Quantitative Trading Microservices 
+# GitOps Configuration Repository: Quantitative Trading Microservices
 
 <p align="center">
   <img src="./Screenshot 2026-09-17 165818.png" alt="GitOps Architecture Flow" width="850">
