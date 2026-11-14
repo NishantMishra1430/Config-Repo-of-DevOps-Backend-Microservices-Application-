@@ -1,6 +1,6 @@
 apiVersion: apps/v1 
 kind: Deployment 
-metadata:
+metadata: 
   name: {{ include "api-gateway.fullname" . }}
   labels:
     {{- include "api-gateway.labels" . | nindent 4 }}
